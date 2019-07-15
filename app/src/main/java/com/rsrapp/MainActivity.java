@@ -15,7 +15,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         changeActivityListener();
+        privacyButtonListener();
+
     }
+
+    private void privacyButtonListener() {
+
+        RelativeLayout privacybutton = findViewById(R.id.privacy_button);
+
+        //add button click listener, then:
+
+        privacybutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                PrivacyDialogWindow privacyDialogWindow = new PrivacyDialogWindow();
+                privacyDialogWindow.show(getSupportFragmentManager(), "Privacy window");
+            }
+        });
+
+    }
+
 
     public void changeActivityListener() {
 

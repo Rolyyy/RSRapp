@@ -6,10 +6,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.common.ConnectionResult;
@@ -60,6 +64,8 @@ public class MapsActivity extends FragmentActivity implements
         mMap = googleMap;
 
 
+
+
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
         {
 
@@ -67,6 +73,29 @@ public class MapsActivity extends FragmentActivity implements
 
             mMap.setMyLocationEnabled(true);
         }
+
+        RelativeLayout callbutton = findViewById(R.id.callbutton);
+
+        callbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+               MapCallingDialog mapCallingDialog = new MapCallingDialog();
+               mapCallingDialog.show(getSupportFragmentManager(), "Map calling window");
+
+            }
+        });
+
+        ImageView backbutton = findViewById(R.id.backbutton);
+
+        backbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(view.getContext(), MainActivity.class);
+                startActivity(myintent);
+            }
+        });
+
 
     }
 
