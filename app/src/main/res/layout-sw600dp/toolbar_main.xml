@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#2E7BAD"
+    android:elevation="40dp"
+    >
+
+    <TextView
+        android:id="@+id/infobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RSR Revalidatieservice"
+        android:textColor="#ffff"
+        android:textSize="20sp"
+        />
+
+</androidx.appcompat.widget.Toolbar>

@@ -6,12 +6,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -80,8 +84,28 @@ public class MapsActivity extends FragmentActivity implements
             @Override
             public void onClick(View view) {
 
-               MapCallingDialog mapCallingDialog = new MapCallingDialog();
-               mapCallingDialog.show(getSupportFragmentManager(), "Map calling window");
+              // MapCallingDialog mapCallingDialog = new MapCallingDialog();
+              // mapCallingDialog.show(getSupportFragmentManager(), "Map calling window");
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapsActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.calling_dialog, null);
+
+                Button callnumber = mView.findViewById(R.id.dialog_call_prompt);
+
+                callnumber.setOnClickListener(new View.OnClickListener() {
+                                                  @Override
+                                                  public void onClick(View view) {
+                                                      readyCallPrompt();
+                                                  }
+                                              });
+
+
+
+
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
 
             }
         });
@@ -96,6 +120,15 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
+
+    }
+
+    public void readyCallPrompt(){
+
+        //Toast.makeText(this, "Calling number...", Toast.LENGTH_LONG).show();
+        Uri number = Uri.parse("tel:+319007788990");
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+        startActivity(callIntent);
 
     }
 

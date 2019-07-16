@@ -22,6 +22,8 @@ public class MapCallingDialog  extends AppCompatDialogFragment {
 
 
 
+
+
         //returns the created dialog
         return builder.create();
     }
