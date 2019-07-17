@@ -28,15 +28,19 @@
         android:layout_below="@+id/privacy_dialog_title"
         android:textSize="18sp"
         android:textColor="#000"
-
-        android:text="@string/privacy_policy"
         android:linksClickable="true"
         android:clickable="true"
         android:textColorLink="@color/colorPrimary"
+
         />
+
+        <!--
+         android:text="@string/privacy_policy"
+         -->
 
 
     <Button
+        android:id="@+id/close_privacy_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ffff"

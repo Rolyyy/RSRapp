@@ -35,7 +35,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -78,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             buildGoogleApiClient();
-           // mMap.setMyLocationEnabled(true); //This enables the Current Device location dot, including orientation
+           // mMap.setMyLocationEnabled(true); //This shows on the map a current location dot, including orientation
         }
 
 
@@ -97,20 +96,25 @@ public class MapsActivity extends FragmentActivity implements
 
                 Button callnumber = mView.findViewById(R.id.dialog_call_prompt);
 
-                callnumber.setOnClickListener(new View.OnClickListener() {
-                                                  @Override
-                                                  public void onClick(View view) {
-                                                      readyCallPrompt();
-                                                  }
-                                              });
-
-
-
-
                 mBuilder.setView(mView);
-                AlertDialog dialog = mBuilder.create();
+                final AlertDialog dialog = mBuilder.create(); //had to make this final due to dialog.dismiss() ... maybe will be changed when Im cleaning the code up???
                 dialog.show();
 
+                callnumber.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        readyCallPrompt();
+                    }
+                });
+
+                Button closedialog = mView.findViewById(R.id.close_dialog_button);
+
+                closedialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
 
             }
         });
@@ -222,8 +226,7 @@ public class MapsActivity extends FragmentActivity implements
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
 
 
-      // String myAddress;
-      //  myAddress = getAddress(location);
+
 
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -252,43 +255,10 @@ public class MapsActivity extends FragmentActivity implements
 
 
 
-
-
         currentUserLocationMarker = mMap.addMarker(markerOptions);
         currentUserLocationMarker.showInfoWindow();
 
 
-
-
-
-
-        /**
-        if(mMap != null){
-
-            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter(){
-                @Override
-                public View getInfoWindow(Marker marker) {
-                    return null;
-                }
-
-                @Override
-                public View getInfoContents(Marker marker) {
-
-                    View row = getLayoutInflater().inflate(R.layout.custom_address_infowindow,null);
-                    TextView myAddress = row.findViewById(R.id.info_window_address);
-                    TextView mySnippet = row.findViewById(R.id.snippet);
-
-                    LatLng ll = marker.getPosition();
-                    myAddress.setText(String.valueOf(ll.latitude));
-                    mySnippet.setText(marker.getSnippet());
-
-                    return null;
-                }
-            });
-        }
-
-
-        */
         if (googleApiClient != null){
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);
         }
@@ -296,16 +266,7 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
-    public String getAddress(Location location)
-    {
 
-
-
-
-
-
-      return null;
-    }
 
 
     @Override

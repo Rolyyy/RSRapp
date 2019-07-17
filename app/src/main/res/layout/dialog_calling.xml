@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_green_light"
-
     >
 
     <TextView
@@ -33,8 +32,10 @@
         />
 
     <Button
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:id="@+id/dialog_call_prompt"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/btn_bg"
         android:text="Bel nu"
@@ -51,12 +52,14 @@
     
     <Button
         android:id="@+id/close_dialog_button"
-        android:layout_width="60dp"
-        android:layout_height="15dp"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
         android:background="#2E7BAD"
         android:text="Annuleren"
         android:textColor="#ffff"
         android:textSize="8sp"
+        android:drawableLeft="@drawable/main_btn_close"
+        android:paddingLeft="5dp"
 
 
         />

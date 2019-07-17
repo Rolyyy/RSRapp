@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         RelativeLayout privacybutton = findViewById(R.id.privacy_button);
 
-        //add button click listener, then:
+
 
         privacybutton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -42,11 +48,37 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_privacy, null);
 
+                TextView textView = mView.findViewById(R.id.terms_of_use);
+
+
+
                 mBuilder.setView(mView);
-                AlertDialog dialog = mBuilder.create();
+                final AlertDialog dialog = mBuilder.create(); //had to make this final due to dialog.dismiss() ... maybe will be changed when Im cleaning the code up???
                 dialog.show();
 
 
+                String text = "Om deze app te gebruiken, dient u het privacybeleid te accepteren";
+                SpannableString ss = new SpannableString(text);
+                ClickableSpan clickableSpan = new ClickableSpan() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent Getintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.rsr.nl/index.php?page=privacy-wetgeving"));
+                        startActivity(Getintent);
+                    }
+                };
+                ss.setSpan(clickableSpan, 38, 51, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                textView.setText(ss);
+                textView.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+                Button closedialog = mView.findViewById(R.id.close_privacy_dialog);
+
+                closedialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
 
 
 
