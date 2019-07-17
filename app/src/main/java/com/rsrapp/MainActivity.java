@@ -2,10 +2,16 @@ package com.rsrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +34,25 @@ public class MainActivity extends AppCompatActivity {
         privacybutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                PrivacyDialogWindow privacyDialogWindow = new PrivacyDialogWindow();
-                privacyDialogWindow.show(getSupportFragmentManager(), "Privacy window");
+               // PrivacyDialogWindow privacyDialogWindow = new PrivacyDialogWindow();
+             //   privacyDialogWindow.show(getSupportFragmentManager(), "Privacy window");
+
+
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_privacy, null);
+
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+
+
+
+
+               // Button callnumber = mView.findViewById(R.id.dialog_call_prompt);
+
+
             }
         });
 

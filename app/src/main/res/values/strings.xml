@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">RSRapp</string>
     <string name="title_activity_maps">MyMap</string>
+    <string name="privacy_policy">Om deze app te gebruiken, dient u het <a href="https://google.co.uk">privacybeleid</a> te accepteren.  </string>
+
 </resources>

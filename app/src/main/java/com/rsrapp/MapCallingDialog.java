@@ -17,7 +17,7 @@ public class MapCallingDialog  extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.calling_dialog, null));
+        builder.setView(inflater.inflate(R.layout.dialog_calling, null));
 
 
 

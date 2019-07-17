@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/colorPrimary"
+    android:layout_marginBottom="20dp"
+    >
+
+    <TextView
+        android:id="@+id/info_window_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Uw locatie:"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffff"
+        />
+
+    <TextView
+        android:id="@+id/info_window_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Address goes here"
+        android:layout_below="@+id/info_window_title"
+        android:layout_marginTop="15dp"
+        android:textColor="#ffff"
+        android:textAlignment="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Onthoud deze locatie voor het telefoongesprek"
+        android:layout_below="@+id/info_window_address"
+        android:layout_marginTop="15dp"
+        android:textColor="#ffff"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/snippet"
+        />
+
+
+
+
+</RelativeLayout>

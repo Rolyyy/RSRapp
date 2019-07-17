@@ -3,9 +3,13 @@ package com.rsrapp;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
-
 import java.util.Objects;
 
 public class PrivacyDialogWindow extends AppCompatDialogFragment {
@@ -16,10 +20,15 @@ public class PrivacyDialogWindow extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
 
 
+        // dialog_text contains "This is a http://test.org/"
+        String msg = getResources().getString(R.string.privacy_policy);
+        SpannableString spanMsg = new SpannableString(msg);
+        Linkify.addLinks(spanMsg, Linkify.ALL);
+
 
         //MAYBE USE INFLATER AND setView LIKE IN OTHER DIALOG TO SET CUSTOM STYLE HERE....?
         builder.setTitle("Privacybeleid") //Title of the dialog
-                .setMessage("Om deze app te gebruiken, dient u het privacybeleid te accepteren") //Message given by the dialog
+                .setMessage(spanMsg) //Message given by the dialog
 
 
 
@@ -32,6 +41,16 @@ public class PrivacyDialogWindow extends AppCompatDialogFragment {
                 });
         //returns the created dialog
         return builder.create();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // Make the dialog's TextView clickable
+        ((TextView)this.getDialog().findViewById(R.id.terms_of_use))
+                .setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
 }
