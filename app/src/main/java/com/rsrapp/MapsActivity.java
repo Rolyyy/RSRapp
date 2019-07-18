@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -93,11 +94,13 @@ public class MapsActivity extends FragmentActivity implements
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapsActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_calling, null);
-
                 Button callnumber = mView.findViewById(R.id.dialog_call_prompt);
+
+
 
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create(); //had to make this final due to dialog.dismiss() ... maybe will be changed when Im cleaning the code up???
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
                 dialog.show();
 
                 callnumber.setOnClickListener(new View.OnClickListener() {

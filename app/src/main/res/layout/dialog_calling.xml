@@ -5,7 +5,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light"
+    android:background="#ACB21E"
+
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+
     >
 
     <TextView
@@ -14,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Belkosten"
-        android:textStyle="bold"
+        android:textSize="16sp"
         android:layout_marginTop="20dp"
         android:textColor="#ffff"
         />
@@ -29,11 +33,13 @@
         android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textColor="#ffff"
+        android:layout_marginBottom="50dp"
         />
 
     <Button
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/dialog_call_prompt"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -43,7 +49,7 @@
         android:layout_below="@id/call_dialog_message"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
 
         android:drawableLeft="@drawable/main_btn_phone"
         android:drawablePadding="-60dp"
@@ -52,12 +58,12 @@
     
     <Button
         android:id="@+id/close_dialog_button"
-        android:layout_width="70dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
         android:background="#2E7BAD"
         android:text="Annuleren"
         android:textColor="#ffff"
-        android:textSize="8sp"
+        android:textSize="10sp"
         android:drawableLeft="@drawable/main_btn_close"
         android:paddingLeft="5dp"
 
