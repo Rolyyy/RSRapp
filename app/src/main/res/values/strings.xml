@@ -2,5 +2,18 @@
     <string name="app_name">RSR Pechhulp</string>
     <string name="title_activity_maps">MyMap</string>
     <string name="privacy_policy">Om deze app te gebruiken, dient u het <a href="https://google.co.uk">privacybeleid</a> te accepteren.  </string>
+    <string name="change_activity_button_text">RSR Pechhulp</string>
+    <string name="privacy_button_text">Privacybeleid</string>
+    <string name="Call_RSR_now_button_text">Bel RSR nu</string>
+    <string name="main_toolbar_title">RSR Revalidatieservice</string>
+    <string name="maps_toolbar_title">RSR Pechhulp</string>
+    <string name="infowindow_title">Uw locatie:</string>
+    <string name="infowindow_reminder_text">Onthoud deze locatie voor het telefoongesprek</string>
+    <string name="dialog_calling_title">Belkosten</string>
+    <string name="dialog_calling_text">Voor dit nummer betaalt u uw gebruikelijke belkosten</string>
+    <string name="dialog_calling_button_text">Bel nu</string>
+    <string name="dialog_calling_close_button">Annuleren</string>
+    <string name="privacy_dialog_title">Privacybeleid</string>
+    <string name="privacy_dialog_close_button">Bevestig</string>
 
 </resources>

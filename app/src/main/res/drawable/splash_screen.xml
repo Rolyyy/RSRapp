@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <!--
+    This page is where the background colour and images for the Splash screen are set
+    -->
+
+
     <item android:drawable="@color/colorWhite"/>
-
-
-
 
     <item
         android:top="60dp">
         <bitmap android:src="@drawable/splash_logo"
             android:gravity="top"
-
             />
-
     </item>
 
     <item
@@ -21,6 +22,7 @@
             android:gravity="bottom"
 
             />
-
     </item>
+
+
 </layer-list>

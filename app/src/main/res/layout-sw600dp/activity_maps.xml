@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+This is the XML page for Maps Activity as seen on Tablet devices
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -38,16 +41,16 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:paddingLeft="0dp"
-            android:src="@drawable/main_btn_phone" />
+            android:layout_marginStart="20dp"
+            android:src="@drawable/main_btn_phone"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Bel RSR nu"
+            android:text="@string/Call_RSR_now_button_text"
             android:textColor="#ffff"
             android:textSize="18sp" />
     </RelativeLayout>

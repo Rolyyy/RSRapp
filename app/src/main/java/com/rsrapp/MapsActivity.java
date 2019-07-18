@@ -15,7 +15,6 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -78,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             buildGoogleApiClient();
-           // mMap.setMyLocationEnabled(true); //This shows on the map a current location dot, including orientation
+           // mMap.setMyLocationEnabled(true); //This shows on map the current location dot, including orientation. Uncomment to enable it again
         }
 
 
@@ -89,8 +88,7 @@ public class MapsActivity extends FragmentActivity implements
             @Override
             public void onClick(View view) {
 
-              // MapCallingDialog mapCallingDialog = new MapCallingDialog();
-              // mapCallingDialog.show(getSupportFragmentManager(), "Map calling window");
+
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapsActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_calling, null);
@@ -254,8 +252,6 @@ public class MapsActivity extends FragmentActivity implements
        markerOptions.position(latLng);
        markerOptions.snippet(address);
        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker));
-        //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-
 
 
         currentUserLocationMarker = mMap.addMarker(markerOptions);
@@ -268,7 +264,6 @@ public class MapsActivity extends FragmentActivity implements
 
 
     }
-
 
 
 
