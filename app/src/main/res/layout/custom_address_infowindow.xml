@@ -25,7 +25,7 @@ This is the XML page for the custom info window which displays the device's curr
 
     <TextView
         android:id="@+id/info_window_address"
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="*Address appears here*"
@@ -39,7 +39,7 @@ This is the XML page for the custom info window which displays the device's curr
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/infowindow_reminder_text"
