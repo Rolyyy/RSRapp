@@ -7,14 +7,18 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +65,8 @@ public class MapsActivity extends FragmentActivity implements
         {
             checkUserLocationPermission();
         }
+        checkInternetConnection();
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -68,6 +74,8 @@ public class MapsActivity extends FragmentActivity implements
 
         mapFragment.getMapAsync(this); //NULL OBJECT REFERENCE BEING CAUSED HERE???
     }
+
+
 
 
     @Override
@@ -130,6 +138,31 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
+
+    }
+
+    public void checkInternetConnection(){
+
+         ConnectivityManager cm = (ConnectivityManager) (MapsActivity.this).getSystemService(Context.CONNECTIVITY_SERVICE);
+         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+         if (activeNetwork != null) {
+         // connected to the internet
+         if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+         // connected to wifi
+         } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+         // connected to mobile data
+         }
+         } else {
+             // not connected to the internet
+
+             AlertDialog.Builder internet_dialog = new AlertDialog.Builder(MapsActivity.this);
+             internet_dialog.setMessage(R.string.no_internet_dialog_text)
+                     .setTitle(R.string.no_internet_dialog_title)
+             .setPositiveButton(R.string.no_internet_dialog_dismiss_button, null);
+             internet_dialog.show();
+
+
+         }
 
     }
 
@@ -212,12 +245,15 @@ public class MapsActivity extends FragmentActivity implements
     public void onLocationChanged(Location location) {
 
         lastLocation = location;
+        Log.d("locationtag", "lastlocation= " + lastLocation);
 
         if(currentUserLocationMarker != null) {
             currentUserLocationMarker.remove();
         }
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+        Log.d("locationtag", "latLng =" + latLng);
 
         //This animates the camera with movement and zooming towards device location
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
@@ -240,8 +276,10 @@ public class MapsActivity extends FragmentActivity implements
         }
 
         String address = addresses.get(0).getAddressLine(0);
+        Log.d("locationtag", "address =" + address);
+
         /**
-        String city = addresses.get(0).getLocality();
+         * String city = addresses.get(0).getLocality();
         String state = addresses.get(0).getAdminArea();
         String zip = addresses.get(0).getPostalCode();
         String country = addresses.get(0).getCountryName();

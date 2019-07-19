@@ -15,5 +15,8 @@
     <string name="dialog_calling_close_button">Annuleren</string>
     <string name="privacy_dialog_title">Privacybeleid</string>
     <string name="privacy_dialog_close_button">Bevestig</string>
+    <string name="no_internet_dialog_title">Internet error</string>
+    <string name="no_internet_dialog_text">Unable to locate your address. Please check your internet connection.</string>
+    <string name="no_internet_dialog_dismiss_button">Dismiss</string>
 
 </resources>
