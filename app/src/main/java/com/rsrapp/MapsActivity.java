@@ -94,9 +94,10 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
+    //this method sets up an onClickListener for the button on the bottom of the screen
+    //2 actions can be carried out depending on screen size
     public void bottomButtonListener(){
 
-        //Setting up a button and onClickListener at the bottom of the Maps Activity
         final RelativeLayout callbutton = findViewById(R.id.callbutton);
         callbutton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -117,26 +118,28 @@ public class MapsActivity extends FragmentActivity implements
         });
     }
 
+    //This method opens a dialog window which can be used to call RSR phone number
     public void callingDialog() {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapsActivity.this);
-        View mView = getLayoutInflater().inflate(R.layout.dialog_calling, null);
+        View mView = getLayoutInflater().inflate(R.layout.dialog_calling, null); //sets the custom layout for the dialog
         Button call_number = mView.findViewById(R.id.dialog_call_prompt);
 
         mBuilder.setView(mView);
-        final AlertDialog dialog = mBuilder.create(); //had to make this final due to dialog.dismiss() ... maybe will be changed when Im cleaning the code up???
-
-        Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
+        final AlertDialog dialog = mBuilder.create();
+        Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM); //set the dialog to the bottom of the screen
         dialog.show();
+
 
         call_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //pressing the button calls another method which carries out the calling prompt
                 readyCallPrompt();
             }
         });
 
+        //This is a custom button to close the dialog
         Button close_dialog = mView.findViewById(R.id.close_dialog_button);
-
         close_dialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,10 +148,10 @@ public class MapsActivity extends FragmentActivity implements
         });
     }
 
+    //This method sets up a button to go back to the previous activity (ActivityMain)
     public void backButtonListener(){
 
         ImageView back_button = findViewById(R.id.backbutton);
-
         back_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -161,6 +164,7 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
+    //Checks the screen width of the device in dp
     public int screenWidthCheck() {
 
         Configuration configuration = MapsActivity.this.getResources().getConfiguration();
@@ -170,6 +174,8 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
+
+    //Checks if device has a working internet connection
     public void checkInternetConnection(){
 
          ConnectivityManager cm = (ConnectivityManager) (MapsActivity.this).getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -182,19 +188,18 @@ public class MapsActivity extends FragmentActivity implements
          Log.d("Tag", "connected to mobile data");
          }
          } else {
-
+            //If there is no internet access, user is notified of this through a dialog window
              Log.d("Tag", "FAILED to Connect to Internet");
              AlertDialog.Builder internet_dialog = new AlertDialog.Builder(MapsActivity.this);
              internet_dialog.setMessage(R.string.no_internet_dialog_text)
                      .setTitle(R.string.no_internet_dialog_title)
              .setPositiveButton(R.string.no_internet_dialog_dismiss_button, null);
              internet_dialog.show();
-
-
          }
 
     }
 
+    //Method carries out action to call RSR number
     public void readyCallPrompt(){
 
         Uri number = Uri.parse("tel:+319007788990");
