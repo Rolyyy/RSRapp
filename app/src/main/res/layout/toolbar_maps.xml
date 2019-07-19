@@ -17,14 +17,19 @@ This is the XML page for Maps Activity Toolbar as seen on Mobile Phone devices
         android:src="@drawable/menu_arrow"
         android:clickable="true"
         android:focusable="true"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/maps_toolbar_title"
         android:textColor="#ffff"
-        android:paddingStart="16dp"
+
         android:textSize="18sp"
         />
 

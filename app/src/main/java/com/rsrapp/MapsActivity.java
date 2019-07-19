@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -90,40 +91,46 @@ public class MapsActivity extends FragmentActivity implements
 
 
 
-        RelativeLayout callbutton = findViewById(R.id.callbutton);
+        final RelativeLayout callbutton = findViewById(R.id.callbutton);
 
         callbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
 
+                if(screenWidthCheck() > 600){
+                    callbutton.setVisibility(View.GONE);
+                    RelativeLayout bottom_tablet_text = findViewById(R.id.tablet_map_bottomt);
+                    bottom_tablet_text.setVisibility(View.VISIBLE);
 
+                }
+                else{
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapsActivity.this);
+                    View mView = getLayoutInflater().inflate(R.layout.dialog_calling, null);
+                    Button callnumber = mView.findViewById(R.id.dialog_call_prompt);
 
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapsActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.dialog_calling, null);
-                Button callnumber = mView.findViewById(R.id.dialog_call_prompt);
+                    mBuilder.setView(mView);
+                    final AlertDialog dialog = mBuilder.create(); //had to make this final due to dialog.dismiss() ... maybe will be changed when Im cleaning the code up???
+                    dialog.getWindow().setGravity(Gravity.BOTTOM);
+                    dialog.show();
 
+                    callnumber.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            readyCallPrompt();
+                        }
+                    });
 
+                    Button closedialog = mView.findViewById(R.id.close_dialog_button);
 
-                mBuilder.setView(mView);
-                final AlertDialog dialog = mBuilder.create(); //had to make this final due to dialog.dismiss() ... maybe will be changed when Im cleaning the code up???
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-                dialog.show();
+                    closedialog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                }
 
-                callnumber.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        readyCallPrompt();
-                    }
-                });
-
-                Button closedialog = mView.findViewById(R.id.close_dialog_button);
-
-                closedialog.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
+               //
 
             }
         });
@@ -138,6 +145,15 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
+
+    }
+
+    public int screenWidthCheck() {
+
+        Configuration configuration = MapsActivity.this.getResources().getConfiguration();
+        int screenWidthDp = configuration.screenWidthDp;
+        Log.d("Width Log", "Device Width:" + screenWidthDp);
+        return screenWidthDp;
 
     }
 
@@ -217,7 +233,13 @@ public class MapsActivity extends FragmentActivity implements
                 }
                 else
                 {
-                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show();
+                    //User has denied Location Permissions for application
+
+                    AlertDialog.Builder location_dialog = new AlertDialog.Builder(MapsActivity.this);
+                    location_dialog.setMessage(R.string.no_location_dialog_text)
+                            .setTitle(R.string.no_location_dialog_title)
+                            .setPositiveButton(R.string.no_internet_dialog_dismiss_button, null);
+                    location_dialog.show();
                 }
                 return;
         }
@@ -275,6 +297,7 @@ public class MapsActivity extends FragmentActivity implements
             e.printStackTrace();
         }
 
+        //This can be null...
         String address = addresses.get(0).getAddressLine(0);
         Log.d("locationtag", "address =" + address);
 
@@ -294,6 +317,7 @@ public class MapsActivity extends FragmentActivity implements
 
         currentUserLocationMarker = mMap.addMarker(markerOptions);
         currentUserLocationMarker.showInfoWindow();
+        currentUserLocationMarker.setVisible(true);
 
 
         if (googleApiClient != null){

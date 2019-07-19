@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
 
 
-                String text = "Om deze app te gebruiken, dient u het privacybeleid te accepteren";
+                String text = getResources().getString(R.string.privacy_dialog_text);
                 SpannableString ss = new SpannableString(text);
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override

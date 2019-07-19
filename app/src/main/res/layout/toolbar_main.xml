@@ -25,14 +25,16 @@ This is the XML page for Main Activity Toolbar as seen on Mobile Phone devices
         android:clickable="true"
         android:focusable="true"
         android:layout_marginStart="150dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
        >
-
 
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/main_i"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            />
 
     </RelativeLayout>
 

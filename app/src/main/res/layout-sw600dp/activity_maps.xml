@@ -30,7 +30,7 @@ This is the XML page for Maps Activity as seen on Tablet devices
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/btn_bg"
+        android:background="@drawable/main_btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -53,6 +53,61 @@ This is the XML page for Maps Activity as seen on Tablet devices
             android:text="@string/Call_RSR_now_button_text"
             android:textColor="#ffff"
             android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/main_btn_bg"
+        android:id="@+id/tablet_map_bottomt"
+        android:visibility="gone"
+        >
+
+
+
+        <TextView
+            android:id="@+id/map_tablet_bottomtext1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:text="Neem contact op met RSR Nederland"
+            android:textColor="#ffff"
+            android:textSize="18sp"
+
+            />
+
+        <TextView
+            android:id="@+id/map_tablet_bottomtext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="+31900 77 88 99 0"
+            android:textColor="#ffff"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/map_tablet_bottomtext1"
+            android:layout_marginTop="40dp"
+            android:drawableLeft="@drawable/main_btn_phone"
+            android:drawablePadding="10dp"
+            android:paddingEnd="10dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infowindow_reminder_text"
+            android:textSize="16sp"
+            android:textColor="#ffff"
+            android:layout_below="@id/map_tablet_bottomtext2"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="40dp"
+
+
+            />
+
+
     </RelativeLayout>
 
 

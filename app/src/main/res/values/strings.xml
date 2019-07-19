@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">RSR Pechhulp</string>
     <string name="title_activity_maps">MyMap</string>
-    <string name="privacy_policy">Om deze app te gebruiken, dient u het <a href="https://google.co.uk">privacybeleid</a> te accepteren.  </string>
     <string name="change_activity_button_text">RSR Pechhulp</string>
+    <string name="privacy_dialog_text">Om deze app te gebruiken, dient u het privacybeleid te accepteren</string>
     <string name="privacy_button_text">Privacybeleid</string>
     <string name="Call_RSR_now_button_text">Bel RSR nu</string>
     <string name="main_toolbar_title">RSR Revalidatieservice</string>
@@ -18,5 +18,7 @@
     <string name="no_internet_dialog_title">Internet error</string>
     <string name="no_internet_dialog_text">Unable to locate your address. Please check your internet connection.</string>
     <string name="no_internet_dialog_dismiss_button">Dismiss</string>
+    <string name="no_location_dialog_title">Location Permission</string>
+    <string name="no_location_dialog_text">Please authorize RSR to find your location while using the app</string>
 
 </resources>
