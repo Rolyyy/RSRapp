@@ -25,6 +25,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,6 +41,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -151,7 +156,7 @@ public class MapsActivity extends FragmentActivity implements
     //This method sets up a button to go back to the previous activity (ActivityMain)
     public void backButtonListener(){
 
-        ImageView back_button = findViewById(R.id.backbutton);
+        TextView back_button = findViewById(R.id.backbutton);
         back_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
