@@ -108,8 +108,8 @@ public class MapsActivity extends FragmentActivity implements
             @Override
             public void onClick(View view) {
 
-                if(screenWidthCheck() > 600){
-                    //If screen had a width greater than 600dp, it is determined to be a tablet in this case, no dialog is displayed.
+                if(screenWidthCheck() > 599){
+                    //If screen had a width greater than 599dp, it is determined to be a tablet in this case, no dialog is displayed.
                     //Instead, a window appears at the bottom of the screen with information on how to call RSR services
 
                     callbutton.setVisibility(View.GONE);

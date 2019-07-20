@@ -59,7 +59,7 @@ This is the XML page for Maps Activity as seen on Tablet devices
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/main_btn_bg"
+        android:background="#CC2E7BAD"
         android:id="@+id/tablet_map_bottomt"
         android:visibility="gone"
         >
